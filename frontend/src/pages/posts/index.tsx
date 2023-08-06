@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { GetServerSideProps } from "next";
-import Post from "@/components/Post/Post";
+import PostItem from "@/components/Post/PostItem";
 import PostForm from "@/components/Post/PostForm";
 import apiClient from "@/services/apiClient";
 import { PostType } from "@/types";
@@ -52,7 +52,7 @@ const PostsList: React.FC<{ initialPosts: PostType[] }> = ({
         <PostForm onSubmit={onSubmit} />
         {/* Postslist */}
         {posts.map((post: PostType) => (
-          <Post key={post.id} post={post} />
+          <PostItem key={post.id} post={post} />
         ))}
       </main>
     </div>
