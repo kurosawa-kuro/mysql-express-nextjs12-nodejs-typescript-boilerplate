@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import apiClient from "@/services/apiClient";
 import { PostType } from "@/types";
+import React from "react";
 
 const PostDetail: React.FC<{ post: PostType }> = ({ post }) => {
   const router = useRouter();
