@@ -24,11 +24,11 @@ describe("Navbar Component", () => {
   it("should display user's name after successful login", () => {
     setup({
       userInfo: {
-        name: "User",
+        email: "test@example.com",
       },
     });
 
-    expect(screen.getByText("User")).toBeInTheDocument();
+    expect(screen.getByText("test@example.com")).toBeInTheDocument();
   });
 
   it("should display 'ログイン' and 'サインアップ' when user is not logged in", () => {

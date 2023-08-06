@@ -31,7 +31,7 @@ const Navbar = () => {
             {userInfo ? (
               <>
                 <span className="bg-white text-custom-blue-dark py-2 px-3 rounded-lg font-medium">
-                  {userInfo.name}
+                  {userInfo.email}
                 </span>
                 <button
                   onClick={logout}

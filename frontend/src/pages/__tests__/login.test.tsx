@@ -1,11 +1,12 @@
 // frontend\src\pages\__tests__\login.test.tsx
 
 import React from "react";
-import { render, fireEvent, waitFor } from "@testing-library/react";
+import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { setupServer } from "msw/node";
 import { rest } from "msw";
 import Login from "../login";
+import Navbar from "../../components/Navbar";
 import { useRouter } from "next/router";
 
 jest.mock("next/router", () => ({
@@ -18,7 +19,18 @@ const server = setupServer(
     const { email, password } = req.body as { email: string; password: string };
 
     if (email === "test@example.com" && password === "password123") {
-      return res(ctx.status(200), ctx.json({ token: "fake_token" }));
+      return res(
+        ctx.status(200),
+        ctx.json({
+          avatarPath: null,
+          createdAt: "2021-07-01T10:00:00Z",
+          email: "test@example.com",
+          id: 1,
+          isAdmin: false,
+          name: "Test User",
+          updatedAt: "2021-07-01T10:00:00Z",
+        })
+      );
     }
 
     return res(ctx.status(403), ctx.json({ message: "Invalid credentials" }));
@@ -50,6 +62,11 @@ describe("Login Page", () => {
     fireEvent.click(getByRole("button", { name: /ログイン/i }));
 
     await waitFor(() => expect(pushMock).toHaveBeenCalledWith("/"));
+
+    // // Navbar
+    // render(<Navbar />);
+    // expect(screen.getByText("test@example.com")).toBeInTheDocument();
+    // screen.debug();
   });
 
   it("shows an alert on failed login", async () => {
