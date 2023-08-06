@@ -1,7 +1,7 @@
 import Head from "next/head";
-import PostsList from "@/pages/posts"; // パスを修正
+import PostsList from "@/pages/posts";
 
-import { PostType } from "@/types"; // 必要な場合、正しいパスに修正してください。
+import { PostType } from "@/types";
 
 interface HomeProps {
   initialPosts: PostType[];

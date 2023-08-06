@@ -16,7 +16,7 @@ const PostItem = (props: Props) => {
     <div className="bg-custom-blue-lightest shadow-md rounded p-4 mb-4">
       <div className="mb-4">
         <div className="flex items-center mb-2">
-          <Link href={`/`}>
+          <Link href={`/posts/${post.id}`}>
             <img
               src="https://placehold.co/600x400"
               className="w-10 h-10 rounded-full mr-2"
@@ -24,9 +24,7 @@ const PostItem = (props: Props) => {
             />
           </Link>
           <div>
-            <h2 className="font-semibold text-md text-custom-blue-dark">
-              {post.user?.name}
-            </h2>
+            <Link href={`/posts/${post.id}`}>{post.user?.name}</Link>
             <p className="text-gray-500 text-sm">
               {new Date(post.createdAt).toLocaleString()}
             </p>
