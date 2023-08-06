@@ -1,7 +1,10 @@
+// frontend\src\components\Post\PostsList.tsx
+
 import React, { useEffect, useState } from "react";
 import Post from "./Post";
-import apiClient from "@/lib/apiClient";
-import { PostType } from "../types";
+import PostForm from "./PostForm";
+import apiClient from "@/services/apiClient";
+import { PostType } from "../../types";
 
 const useApiClient = () => {
   const postToServer = async (url: string, data: any) => {
@@ -32,15 +35,12 @@ const useApiClient = () => {
 };
 
 const PostsList = () => {
-  const [description, setDescription] = useState<string>("");
   const [posts, setPosts] = useState<PostType[]>([]);
   const { postToServer, getFromServer } = useApiClient();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onSubmit = async (description: string) => {
     const newPost = await postToServer("/posts", { description });
     setPosts((prevPosts) => [newPost, ...prevPosts]);
-    setDescription("");
   };
 
   const readPosts = async () => {
@@ -55,24 +55,7 @@ const PostsList = () => {
   return (
     <div className="min-h-screen bg-custom-blue-lightest">
       <main className="container mx-auto py-4">
-        <div className="bg-custom-blue-light shadow-md rounded p-4 mb-4">
-          <form onSubmit={handleSubmit}>
-            <textarea
-              className="w-full h-24 p-2 border border-gray-300 rounded resize-none focus:outline-none focus:ring-2 focus:ring-custom-blue-darker"
-              placeholder="What's on your mind?"
-              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                setDescription(e.target.value)
-              }
-              value={description}
-            ></textarea>
-            <button
-              type="submit"
-              className="mt-2 bg-custom-green-light hover:bg-custom-green-dark duration-200 text-white font-semibold py-2 px-4 rounded"
-            >
-              投稿
-            </button>
-          </form>
-        </div>
+        <PostForm onSubmit={onSubmit} />
         {posts.map((post: PostType) => (
           <Post key={post.id} post={post} />
         ))}

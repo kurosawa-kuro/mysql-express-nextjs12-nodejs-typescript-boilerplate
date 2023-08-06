@@ -11,7 +11,7 @@ const Navbar = () => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>; // Replace with your own loading spinner
+    return <p>Loading...</p>;
   }
 
   return (

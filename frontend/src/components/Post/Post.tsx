@@ -1,5 +1,7 @@
+// frontend\src\components\Post.tsx
+
 import { PostType } from "@/types";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 

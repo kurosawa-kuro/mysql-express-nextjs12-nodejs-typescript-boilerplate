@@ -1,5 +1,5 @@
 import { useAuthStore } from "@/state/store";
-import apiClient from "@/lib/apiClient";
+import apiClient from "@/services/apiClient";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -16,12 +16,14 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await apiClient.post("/auth/login", {
-        email,
-        password,
-      });
+      const response = await apiClient
+        .post("/auth/login", {
+          email,
+          password,
+        })
+        .then((response) => response.data);
 
-      setUserInfo(response.data);
+      setUserInfo(response);
       router.push("/");
     } catch (err) {
       alert("入力内容が正しくありません。");

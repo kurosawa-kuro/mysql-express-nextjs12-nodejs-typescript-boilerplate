@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "@/styles/Home.module.css";
-import PostsList from "@/components/PostsList";
+import PostsList from "@/components/Post/PostsList";
 
 export default function Home() {
   return (
