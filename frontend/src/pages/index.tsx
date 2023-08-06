@@ -1,9 +1,13 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "@/styles/Home.module.css";
-import PostsList from "@/components/Post/PostsList";
+import PostsList from "@/pages/posts"; // パスを修正
 
-export default function Home() {
+import { PostType } from "@/types"; // 必要な場合、正しいパスに修正してください。
+
+interface HomeProps {
+  initialPosts: PostType[];
+}
+
+export default function Home({ initialPosts }: HomeProps) {
   return (
     <>
       <Head>
@@ -14,8 +18,10 @@ export default function Home() {
       </Head>
 
       <div>
-        <PostsList />
+        <PostsList initialPosts={initialPosts} />
       </div>
     </>
   );
 }
+
+export { getServerSideProps } from "@/pages/posts";

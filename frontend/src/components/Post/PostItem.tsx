@@ -9,7 +9,7 @@ type Props = {
   post: PostType;
 };
 
-const Post = (props: Props) => {
+const PostItem = (props: Props) => {
   const { post } = props;
 
   return (
@@ -38,4 +38,4 @@ const Post = (props: Props) => {
   );
 };
 
-export default Post;
+export default PostItem;
