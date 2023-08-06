@@ -1,0 +1,7 @@
+### Read Top
+GET  http://localhost:8080/api
+
+
+### Read Endpoints
+GET  http://localhost:8080/api/endpoints
+

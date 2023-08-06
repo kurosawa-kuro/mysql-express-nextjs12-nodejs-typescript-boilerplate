@@ -1,0 +1,76 @@
+### Register a new user
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "User",
+  "email": "user@email.com",
+  "password": "123456"
+}
+
+### Login as an existing user
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@email.com",
+  "password": "123456"
+}
+
+### Login as an admin user
+POST http://localhost:8080/api/users/login
+Content-Type: application/json
+
+{
+  "email": "admin@email.com",
+  "password": "123456"
+}
+
+### Get user profile (requires authentication)
+GET http://localhost:8080/api/users/profile
+Content-Type: application/json
+
+### Update user profile (requires authentication)
+PUT http://localhost:8080/api/users/profile
+Content-Type: application/json
+
+{
+  "name": " Updated User",
+  "email": "updated_user@email.com"
+}
+
+### Update user profile password (requires authentication)
+PUT http://localhost:8080/api/users/profile/password
+Content-Type: application/json
+
+{
+  "password": "123456",
+  "confirmPassword": "123456",
+  "newPassword": "1234567"
+}
+
+### Get list of users (requires authentication and admin access)
+GET http://localhost:8080/api/users
+Content-Type: application/application/json
+
+### Delete user (requires authentication and admin access)
+DELETE http://localhost:8080/api/users/3
+Content-Type: application/json
+
+### Get a user by ID (requires authentication and admin access)
+GET http://localhost:8080/api/users/3
+Content-Type: application/json
+
+### Update user (requires authentication and admin access)
+PUT http://localhost:8080/api/users/{id}
+Content-Type: application/json
+
+{
+  "name": "New Admin Name",
+  "email": "new_admin@email.com",
+  "isAdmin": true
+}
+
+### Logout an user
+POST http://localhost:8080/api/users/logout
+Content-Type: application/json

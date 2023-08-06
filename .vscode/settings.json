@@ -1,0 +1,20 @@
+{
+    "favorites.resources": [
+        {
+            "filePath": "backend\\database\\prisma\\schema.prisma",
+            "group": "Default"
+        },
+        {
+            "filePath": "package.json",
+            "group": "Default"
+        },
+        {
+            "filePath": "frontend\\src\\main.tsx",
+            "group": "Default"
+        },
+        {
+            "filePath": "backend\\__test__\\testData.ts",
+            "group": "Default"
+        }
+    ]
+}
