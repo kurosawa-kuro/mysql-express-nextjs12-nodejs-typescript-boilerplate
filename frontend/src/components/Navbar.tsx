@@ -1,3 +1,5 @@
+// frontend\src\components\Navbar.tsx
+
 import { useAuthStore } from "@/state/store";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
