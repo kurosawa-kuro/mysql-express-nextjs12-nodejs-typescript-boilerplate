@@ -4,7 +4,6 @@ import apiClient from "@/services/apiClient";
 import { PostType } from "@/types";
 
 const PostDetail: React.FC<{ post: PostType }> = ({ post }) => {
-  // Use Next.js router to access the dynamic route parameter
   const router = useRouter();
   const { id } = router.query;
 
@@ -21,7 +20,9 @@ const PostDetail: React.FC<{ post: PostType }> = ({ post }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { id } = context.params!;
+  if (!context.params) return { notFound: true };
+
+  const { id } = context.params;
   const token = context.req.cookies.jwt;
 
   try {

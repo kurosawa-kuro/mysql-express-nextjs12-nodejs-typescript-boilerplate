@@ -16,18 +16,16 @@ export const protect = asyncHandler(
   async (req: UserRequest, res: Response, next: NextFunction) => {
     let token;
 
-    // req.cookies.jwt からトークンをチェック
     if (req.cookies && req.cookies.jwt) {
       token = req.cookies.jwt;
     }
 
-    // req.headers.authorization からトークンをチェック
     if (
       !token &&
       req.headers.authorization &&
       req.headers.authorization.startsWith("Bearer ")
     ) {
-      token = req.headers.authorization.split(" ")[1]; // "Bearer トークン" から "トークン" を取り出す
+      token = req.headers.authorization.split(" ")[1];
     }
 
     console.log("token", token);
